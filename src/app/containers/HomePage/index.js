@@ -13,7 +13,6 @@ import { updateFilter } from './../FilterList/actions';
 import { sortProperties } from './../GridView/actions';
 
 const Wrapper = styled.div`
-  border: 1px solid red;
   padding: 10px;
   display: flex;
 `;
