@@ -29,7 +29,7 @@ class FilterList extends React.Component {
   updateWithPhotos = (withPhotos) => this.props.updateFilter({ withPhotos })
 
   render() {
-    console.log('props::', this.props);
+    // console.log('props::', this.props);
     return (
       <div>
         <Button sm alt style={{ padding: '0px' }} onClick={this.props.reset}>Reset all</Button>

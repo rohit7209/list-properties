@@ -21,7 +21,7 @@ const Button = (props) => {
 
 Button.propTypes = {
   children: PropTypes.any,
-  alt: PropTypes.bool,
+  alt: PropTypes.any,
   sm: PropTypes.bool,
 };
 

@@ -43,9 +43,9 @@ class HomePage extends React.Component {
 
   onChange = (sliderView) => this.setState({ sliderView })
 
-  onSortChange = (sortDescending) => {
-    this.props.updateFilter({ sortDescending });
-    this.props.sortProperties({ sortDescending });
+  onSortChange = (sort) => {
+    this.props.updateFilter({ sort });
+    this.props.sortProperties({ sort });
   }
 
   render() {
@@ -58,7 +58,12 @@ class HomePage extends React.Component {
 
         <Col2>
           <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
-            <div style={{ paddingTop: '10px', fontSize: '12px' }}>Sort: &nbsp;&nbsp;<SortToggle onChange={this.onSortChange} text="Rent" ascending /></div>
+            <div style={{ fontSize: '12px' }}>
+              Sort: &nbsp;&nbsp;
+              <SortToggle onChange={this.onSortChange} active={this.props.filters.sort.rent} text="Rent" id="rent" ascending />
+              <SortToggle onChange={this.onSortChange} active={this.props.filters.sort.size} text="Size" id="size" ascending />
+              <SortToggle onChange={this.onSortChange} active={this.props.filters.sort.date} text="Creation Date" id="date" ascending />
+            </div>
             <ViewToggle onChange={this.onChange} />
           </div>
           <Hr />

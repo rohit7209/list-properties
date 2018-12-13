@@ -19,7 +19,7 @@ function* requestNextPropertiesFlow(action) {
   try {
     const response = yield call(fetchNextProperties, action.payload);
     const payload = response.data;
-    yield put(requestNextPropertiesDone({ ...payload, append: !!action.payload.pageNumber, sortDescending: action.payload.sortDescending }));
+    yield put(requestNextPropertiesDone({ ...payload, append: !!action.payload.pageNumber, sort: action.payload.sort }));
   } catch (error) {
     yield put(requestNextPropertiesDone(error));
   }

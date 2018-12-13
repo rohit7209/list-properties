@@ -61,7 +61,7 @@ class SliderView extends React.Component {
 
   componentWillMount() {
     this.props.requestNextProperties({
-      sortDescending: this.props.filters.sortDescending,
+      sort: this.props.filters.sort,
     });
   }
 
@@ -108,7 +108,7 @@ class SliderView extends React.Component {
         this.props.requestNextProperties({
           pageNumber: this.state.currentPage,
           count: this.state.countPerPage,
-          sortDescending: this.props.filters.sortDescending,
+          sort: this.props.filters.sort,
         });
         this.setState({
           currentPage: this.state.currentPage + 1,

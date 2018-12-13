@@ -17,12 +17,11 @@ class App extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('next::', nextProps);
+    // console.log('next::', nextProps);
     this.setState({ image: nextProps.state.AppReducer.message });
   }
 
   render() {
-    console.log(this.props);
     return (
       <Layout>
         <HomePage />

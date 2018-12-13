@@ -8,7 +8,7 @@ const defaultState = {
   area: 0, // 650,
   rent: 0, // 15000,
   withPhotos: false,
-  sortDescending: true,
+  sort: {},
 };
 
 export const Filters = (state = defaultState, action) => {
@@ -24,7 +24,7 @@ export const Filters = (state = defaultState, action) => {
     case FL_RESET:
       return {
         ...defaultState,
-        sortDescending: state.sortDescending,
+        sort: state.sort,
       };
     default:
       return state

@@ -10,29 +10,41 @@ const defaultState = {
   list: [],
 };
 
-const sortList = (list, sortDescending) => {
-  let min = list[0].rent;
+const sortList = (list, sort) => {
+
+  let key = '';
+  switch (Object.keys(sort)[0]) {
+    case 'rent': key = 'rent'; break;
+    case 'size': key = 'propertySize'; break;
+    case 'date': key = 'creationDate'; break;
+    default: key = '';
+  }
+
+  if (!key) return list;
+
+  let min = list[0][key];
   let max = 0;
 
   var sortedList = [];
 
   list.forEach(item => {
-    if (item.rent < min) {
-      min = item.rent;
+    if (item[key] < min) {
+      min = item[key];
       sortedList.splice(0, 0, item);
-    } else if (item.rent >= max) {
-      max = item.rent;
+    } else if (item[key] >= max) {
+      max = item[key];
       sortedList.push(item);
     } else {
       for (let i = 1; i < sortedList.length; i++) {
-        if (item.rent >= sortedList[i - 1].rent && item.rent < sortedList[i].rent) {
+        if (item[key] >= sortedList[i - 1][key] && item[key] < sortedList[i][key]) {
           sortedList.splice(i, 0, item);
           break;
         }
       }
     }
   })
-  return sortDescending ? sortedList : sortedList.reverse();
+  // return sortedList;
+  return sort[Object.keys(sort)[0]] ? sortedList : sortedList.reverse();
 }
 
 export const GridView = (state = defaultState, action) => {
@@ -41,7 +53,7 @@ export const GridView = (state = defaultState, action) => {
     case GV_SORT_PROPERTIES:
       return {
         ...state,
-        list: sortList(state.list, action.payload.sortDescending),
+        list: sortList(state.list, action.payload.sort),
       };
 
     case GV_REQUEST_NEXT_PROPERTIES:
@@ -55,7 +67,7 @@ export const GridView = (state = defaultState, action) => {
       return {
         ...state,
         requesting: false,
-        list: sortList(list, action.payload.sortDescending),
+        list: sortList(list, action.payload.sort),
         total_count: action.payload.otherParams.total_count,
       };
 

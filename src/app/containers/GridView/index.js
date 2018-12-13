@@ -29,7 +29,7 @@ class GridView extends React.Component {
   componentDidMount = () => {
     window.addEventListener('scroll', this.onScrollHandler);
     this.props.requestNextProperties({
-      sortDescending: this.props.filters.sortDescending,
+      sort: this.props.filters.sort,
     });
   }
 
@@ -40,7 +40,7 @@ class GridView extends React.Component {
         this.props.requestNextProperties({
           pageNumber: this.state.currentPage,
           count: this.state.countPerPage,
-          sortDescending: this.props.filters.sortDescending,
+          sort: this.props.filters.sort,
         });
         this.setState({ currentPage: this.state.currentPage + 1 });
       }
